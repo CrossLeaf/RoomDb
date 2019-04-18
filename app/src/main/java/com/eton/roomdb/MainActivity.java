@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.eton.roomdb.db.AppDatabase;
 import com.eton.roomdb.db.Contact;
 import com.eton.roomdb.db.Group;
+import com.eton.roomdb.db.Message;
 
 import org.w3c.dom.Text;
 
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
                         AppDatabase.getInstance(getApplicationContext()).contactDao().insertContact(contact);
                         Group group = new Group("123123");
                         AppDatabase.getInstance(getApplicationContext()).groupDao().insertGroup(group);
+                        Message message = new Message("messsssage");
+                        AppDatabase.getInstance(getApplicationContext()).messageDao().insertMessage(message);
                     }
                 }).start();
             }

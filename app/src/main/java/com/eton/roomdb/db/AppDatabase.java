@@ -7,7 +7,7 @@ import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.migration.Migration;
 import android.content.Context;
 
-@Database(entities = {Contact.class, Group.class}, version = 6)
+@Database(entities = {Contact.class, Group.class, Message.class}, version = 5)
 public abstract class AppDatabase extends RoomDatabase {
     static final Migration MIGRATION_4_5 = new Migration(4, 5) {
         @Override
@@ -38,4 +38,6 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract ContactDao contactDao();
 
     public abstract GroupDao groupDao();
+
+    public abstract MessageDao messageDao();
 }
