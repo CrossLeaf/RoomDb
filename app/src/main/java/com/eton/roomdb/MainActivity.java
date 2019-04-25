@@ -7,11 +7,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.eton.roomdb.db.AppDatabase;
+import com.eton.roomdb.db.Chat;
 import com.eton.roomdb.db.Contact;
 import com.eton.roomdb.db.Group;
 import com.eton.roomdb.db.Message;
-
-import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,14 +28,33 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("123", "run: 123123");
                         //初始化数据库
 //                AppDatabase.getInstance(getApplicationContext());
-                        Contact contact = new Contact("1", "img", "小a");
-                        AppDatabase.getInstance(getApplicationContext()).contactDao().insertContact(contact);
-                        Group group = new Group("123123");
-                        AppDatabase.getInstance(getApplicationContext()).groupDao().insertGroup(group);
-                        Message message = new Message("messsssage");
-                        AppDatabase.getInstance(getApplicationContext()).messageDao().insertMessage(message);
+                        for (int i = 0; i < 10; i++) {
+                            Contact contact = new Contact(i + "", "img", "小a");
+                            AppDatabase.getInstance(getApplicationContext()).contactDao().insertContact(contact);
+                            Group group = new Group(i + "","","","","",3,2,1,true,"","",2,2,"",3,"","","",2,"","","");
+                            Group group1 = new Group(i + "10","","","","",3,2,1,false,"","",2,2,"",3,"","","",2,"","","");
+                            AppDatabase.getInstance(getApplicationContext()).groupDao().insertGroup(group);
+                            AppDatabase.getInstance(getApplicationContext()).groupDao().insertGroup(group1);
+                            Message message = new Message(i + "");
+                            AppDatabase.getInstance(getApplicationContext()).messageDao().insertMessage(message);
+                            Chat chat = new Chat("1");
+                            AppDatabase.getInstance(getApplicationContext()).chatDao().insertChat(chat);
+                        }
                     }
                 }).start();
+            }
+        });
+        clickTv.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.d("123", "run: longclick");
+                        AppDatabase.getInstance(getApplicationContext()).contactDao().deleteAll();
+                    }
+                }).start();
+                return true;
             }
         });
 //        initDbHelper();
@@ -46,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 Log.d("123", "run: 456456");
                 //初始化数据库
-                AppDatabase.getInstance(getApplicationContext());
+//                AppDatabase.getInstance(getApplicationContext());
 //                Contact contact = new Contact("1", "img", "小a");
 //                AppDatabase.getInstance(getApplicationContext()).contactDao().insertContact(contact);
             }

@@ -31,7 +31,7 @@ public class Group {
     @ColumnInfo(name = "current_position")
     private int currentPosition;
     @ColumnInfo(name = "is_private")
-    private String isPrivate;
+    private boolean isPrivate;
     @ColumnInfo(name = "from_id")
     private String fromId;
     @ColumnInfo(name = "text")
@@ -59,7 +59,7 @@ public class Group {
     @ColumnInfo(name = "at_nickname")
     private String atNickname;
 
-    public Group(@NonNull String chatId, String uid, String users, String avatar, String title, long updateTime, int unread, int currentPosition, String isPrivate, String fromId, String text, int chatPosition, int msgType, String event, int fromRole, String fromNickname, String fromAvatar, String fileId, int fileDuration, String isMuted, String at, String atNickname) {
+    public Group(@NonNull String chatId, String uid, String users, String avatar, String title, long updateTime, int unread, int currentPosition, boolean isPrivate, String fromId, String text, int chatPosition, int msgType, String event, int fromRole, String fromNickname, String fromAvatar, String fileId, int fileDuration, String isMuted, String at, String atNickname) {
         this.chatId = chatId;
         this.uid = uid;
         this.users = users;
@@ -153,11 +153,11 @@ public class Group {
         this.currentPosition = currentPosition;
     }
 
-    public String getIsPrivate() {
+    public boolean getIsPrivate() {
         return isPrivate;
     }
 
-    public void setIsPrivate(String isPrivate) {
+    public void setIsPrivate(boolean isPrivate) {
         this.isPrivate = isPrivate;
     }
 

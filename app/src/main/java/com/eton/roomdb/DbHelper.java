@@ -226,7 +226,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 " file_duration integer, is_muted varchar, at varchar, at_nick_name varchar, " +
                 "send_state integer, item_type integer, og_object varchar)");
 
-        sqLiteDatabase.execSQL("create table test (id, name)");
+//        sqLiteDatabase.execSQL("create table test (id, name)");
     }
 
     @Override
